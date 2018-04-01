@@ -5,21 +5,19 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BFA0EAE3-5FCD-EB00-D849-A8E7BAA656D0}</ProjectGuid>
+    <ProjectGuid>{D5E0EB0E-6BED-C089-7A2E-A100DC30099D}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
-    <UnityProjectType>Game:1</UnityProjectType>
+    <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.3.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -299,55 +297,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="WoT 2.0.Plugins.csproj">
-      <Project>{5E971B1C-DFBF-2AD4-7E43-F940F7388908}</Project>
-      <Name>WoT 2.0.Plugins</Name>
+    <ProjectReference Include="GrimHeart.Plugins.csproj">
+      <Project>{4274EF46-7382-A725-B467-49768A59AD1C}</Project>
+      <Name>GrimHeart.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="GrimHeart.csproj">
+      <Project>{F56BAA7E-ECCB-56B8-8A65-36285BBEE646}</Project>
+      <Name>GrimHeart</Name>
+    </ProjectReference>
+    <ProjectReference Include="GrimHeart.unityproj">
+      <Project>{F56BAA7E-ECCB-56B8-8A65-36285BBEE646}</Project>
+      <Name>GrimHeart</Name>
+    </ProjectReference>
+    <ProjectReference Include="GrimHeart.Editor.Plugins.csproj">
+      <Project>{E56B4B3D-1701-76BE-F2B1-1DA62817FD9F}</Project>
+      <Name>GrimHeart.Editor.Plugins</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\3rd Party Assets\Dissolve Edge by Moonflower Carnivore\Scripts\HideIfDisabledDrawer.cs" />
-    <Compile Include="Assets\DarkRift\Plugins\Client\UnityClient.cs" />
-    <Compile Include="Assets\DarkRift\Plugins\Server\UnityConsoleLogWriter.cs" />
-    <Compile Include="Assets\DarkRift\Plugins\Server\UnityServer.cs" />
-    <Compile Include="Assets\DarkRift\Plugins\Server\UnityServerHelper.cs" />
-    <Compile Include="Assets\Experimental\Trigger Popup\Scripts\TriggerUI.cs" />
-    <Compile Include="Assets\Looader\Scripts\LO_LoadingScreen.cs" />
-    <Compile Include="Assets\Looader\Scripts\LO_LoadScene.cs" />
-    <Compile Include="Assets\Looader\Scripts\LO_LoadSceneTrigger.cs" />
-    <Compile Include="Assets\Looader\Scripts\LO_PressAnyKey.cs" />
-    <Compile Include="Assets\Looader\Scripts\LO_SelectStyle.cs" />
-    <Compile Include="Assets\Scripts\BulletScript.cs" />
-    <Compile Include="Assets\Scripts\CubeTexture.cs" />
-    <Compile Include="Assets\Scripts\Entity.cs" />
-    <Compile Include="Assets\Scripts\HandleTextFile.cs" />
-    <Compile Include="Assets\Scripts\LUI Scripts\LUI_BrightnessAdjustment.cs" />
-    <Compile Include="Assets\Scripts\LUI Scripts\LUI_ButtonSound.cs" />
-    <Compile Include="Assets\Scripts\LUI Scripts\LUI_DissolveEdge.cs" />
-    <Compile Include="Assets\Scripts\LUI Scripts\LUI_Exit.cs" />
-    <Compile Include="Assets\Scripts\LUI Scripts\LUI_LaunchURL.cs" />
-    <Compile Include="Assets\Scripts\LUI Scripts\LUI_MenuCamControl.cs" />
-    <Compile Include="Assets\Scripts\LUI Scripts\LUI_PAK.cs" />
-    <Compile Include="Assets\Scripts\LUI Scripts\LUI_PanelAnim.cs" />
-    <Compile Include="Assets\Scripts\LUI Scripts\LUI_PressAnyKey.cs" />
-    <Compile Include="Assets\Scripts\LUI Scripts\LUI_Quality.cs" />
-    <Compile Include="Assets\Scripts\LUI Scripts\LUI_RotateObject.cs" />
-    <Compile Include="Assets\Scripts\LUI Scripts\LUI_TiltWindow.cs" />
-    <Compile Include="Assets\Scripts\LUI Scripts\LUI_UIAnimManager.cs" />
-    <Compile Include="Assets\Scripts\LUI Scripts\LUI_Volume.cs" />
-    <Compile Include="Assets\Scripts\MainMenuController.cs" />
-    <Compile Include="Assets\Scripts\NetworkPlayerManager.cs" />
-    <Compile Include="Assets\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\PlayerObject.cs" />
-    <Compile Include="Assets\Scripts\PlayerSpawner.cs" />
-    <Compile Include="Assets\Scripts\SlotID.cs" />
-    <Compile Include="Assets\Scripts\Tags\ItemTags.cs" />
-    <Compile Include="Assets\Scripts\Tags\NetworkingTags.cs" />
-    <Compile Include="Assets\Scripts\UI\BagCollision.cs" />
-    <Compile Include="Assets\Scripts\UI\Item.cs" />
-    <Compile Include="Assets\Scripts\UI\ItemDragHandler.cs" />
-    <Compile Include="Assets\Scripts\UI\ItemDropHandler.cs" />
-    <Compile Include="Assets\Scripts\UI\TabBetweenInputs.cs" />
-    <Compile Include="Assets\Scripts\UserAccount.cs" />
+    <Compile Include="Assets\DarkRift\Plugins\Client\Editor\UnityClientEditor.cs" />
+    <Compile Include="Assets\DarkRift\Plugins\Server\Editor\UnityServerEditor.cs" />
+    <Compile Include="Assets\Editor\LomenuEditor.cs" />
+    <Compile Include="Assets\Editor\LooaderEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\3rd Party Assets\Dissolve Edge by Moonflower Carnivore\Shaders\Transparent_Unlit_DissolveEdge.shader" />

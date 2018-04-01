@@ -5,19 +5,21 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BD73C423-D4E3-DFBF-2D13-D08C54D4695E}</ProjectGuid>
+    <ProjectGuid>{FEDDFC7F-28A0-A1D5-4935-F502C17EB61F}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
+    <AssemblyName>Assembly-CSharp-Editor-firstpass</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
-    <UnityProjectType>Editor:5</UnityProjectType>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
+    <UnityProjectType>EditorPlugins:7</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.3.1f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -297,28 +299,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="WoT 2.0.Plugins.csproj">
+    <ProjectReference Include="GrimHeart.Plugins.csproj">
       <Project>{5E971B1C-DFBF-2AD4-7E43-F940F7388908}</Project>
-      <Name>WoT 2.0.Plugins</Name>
-    </ProjectReference>
-    <ProjectReference Include="WoT 2.0.csproj">
-      <Project>{BFA0EAE3-5FCD-EB00-D849-A8E7BAA656D0}</Project>
-      <Name>WoT 2.0</Name>
-    </ProjectReference>
-    <ProjectReference Include="WoT 2.0.unityproj">
-      <Project>{BFA0EAE3-5FCD-EB00-D849-A8E7BAA656D0}</Project>
-      <Name>WoT 2.0</Name>
-    </ProjectReference>
-    <ProjectReference Include="WoT 2.0.Editor.Plugins.csproj">
-      <Project>{FEDDFC7F-28A0-A1D5-4935-F502C17EB61F}</Project>
-      <Name>WoT 2.0.Editor.Plugins</Name>
+      <Name>GrimHeart.Plugins</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\DarkRift\Plugins\Client\Editor\UnityClientEditor.cs" />
-    <Compile Include="Assets\DarkRift\Plugins\Server\Editor\UnityServerEditor.cs" />
-    <Compile Include="Assets\Editor\LomenuEditor.cs" />
-    <Compile Include="Assets\Editor\LooaderEditor.cs" />
+    <Compile Include="Assets\Standard Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\3rd Party Assets\Dissolve Edge by Moonflower Carnivore\Shaders\Transparent_Unlit_DissolveEdge.shader" />
