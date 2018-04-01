@@ -1,0 +1,21 @@
+C:\Users\Star\source\repos\WoTServer\LoginServer\obj\Debug\LoginServer.csprojResolveAssemblyReference.cache
+C:\Users\Star\source\repos\WoTServer\LoginServer\obj\Debug\LoginServer.csproj.CoreCompileInputs.cache
+C:\Users\Star\Desktop\WoT 2.0 Server\Plugins\LoginServer.dll.config
+C:\Users\Star\Desktop\WoT 2.0 Server\Plugins\LoginServer.dll
+C:\Users\Star\Desktop\WoT 2.0 Server\Plugins\LoginServer.pdb
+C:\Users\Star\source\repos\WoTServer\LoginServer\obj\Debug\LoginServer.dll
+C:\Users\Star\source\repos\WoTServer\LoginServer\obj\Debug\LoginServer.pdb
+C:\Users\Star\source\repos\GrimHeartServer\LoginServer\obj\Debug\LoginServer.csprojResolveAssemblyReference.cache
+C:\Users\Star\source\repos\GrimHeartServer\LoginServer\obj\Debug\LoginServer.csproj.CoreCompileInputs.cache
+C:\Users\Star\source\repos\GrimHeartServer\LoginServer\obj\Debug\LoginServer.dll
+C:\Users\Star\source\repos\GrimHeartServer\LoginServer\obj\Debug\LoginServer.pdb
+C:\Users\Star\Desktop\GrimHeart\GrimHeart Server\Plugins\LoginServer.dll.config
+C:\Users\Star\Desktop\GrimHeart\GrimHeart Server\Plugins\LoginServer.dll
+C:\Users\Star\Desktop\GrimHeart\GrimHeart Server\Plugins\LoginServer.pdb
+C:\Users\Star\Desktop\Desktop\GrimHeart\GrimHeart Server\Plugins\LoginServer.dll.config
+C:\Users\Star\Desktop\Desktop\GrimHeart\GrimHeart Server\Plugins\LoginServer.dll
+C:\Users\Star\Desktop\Desktop\GrimHeart\GrimHeart Server\Plugins\LoginServer.pdb
+C:\Users\Star\Desktop\GrimHeart\GrimHeart Server\Project\LoginServer\obj\Debug\LoginServer.csprojResolveAssemblyReference.cache
+C:\Users\Star\Desktop\GrimHeart\GrimHeart Server\Project\LoginServer\obj\Debug\LoginServer.csproj.CoreCompileInputs.cache
+C:\Users\Star\Desktop\GrimHeart\GrimHeart Server\Project\LoginServer\obj\Debug\LoginServer.dll
+C:\Users\Star\Desktop\GrimHeart\GrimHeart Server\Project\LoginServer\obj\Debug\LoginServer.pdb

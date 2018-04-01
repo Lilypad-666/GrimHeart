@@ -1,0 +1,25 @@
+C:\Users\Star\source\repos\WoTServer\WoTServer\obj\Debug\GameServer.csprojResolveAssemblyReference.cache
+C:\Users\Star\source\repos\WoTServer\WoTServer\obj\Debug\GameServer.csproj.CoreCompileInputs.cache
+C:\Users\Star\Desktop\WoT 2.0 Server\Plugins\GameServer.dll.config
+C:\Users\Star\Desktop\WoT 2.0 Server\Plugins\GameServer.dll
+C:\Users\Star\Desktop\WoT 2.0 Server\Plugins\GameServer.pdb
+C:\Users\Star\source\repos\WoTServer\WoTServer\obj\Debug\GameServer.dll
+C:\Users\Star\source\repos\WoTServer\WoTServer\obj\Debug\GameServer.pdb
+C:\Users\Star\source\repos\GrimHeartServer\WoTServer\obj\Debug\GameServer.csprojResolveAssemblyReference.cache
+C:\Users\Star\source\repos\GrimHeartServer\WoTServer\obj\Debug\GameServer.csproj.CoreCompileInputs.cache
+C:\Users\Star\source\repos\GrimHeartServer\WoTServer\obj\Debug\GameServer.dll
+C:\Users\Star\source\repos\GrimHeartServer\WoTServer\obj\Debug\GameServer.pdb
+C:\Users\Star\source\repos\GrimHeartServer\GameServer\obj\Debug\GameServer.csprojResolveAssemblyReference.cache
+C:\Users\Star\source\repos\GrimHeartServer\GameServer\obj\Debug\GameServer.csproj.CoreCompileInputs.cache
+C:\Users\Star\source\repos\GrimHeartServer\GameServer\obj\Debug\GameServer.dll
+C:\Users\Star\source\repos\GrimHeartServer\GameServer\obj\Debug\GameServer.pdb
+C:\Users\Star\Desktop\GrimHeart\GrimHeart Server\Plugins\GameServer.dll.config
+C:\Users\Star\Desktop\GrimHeart\GrimHeart Server\Plugins\GameServer.dll
+C:\Users\Star\Desktop\GrimHeart\GrimHeart Server\Plugins\GameServer.pdb
+C:\Users\Star\Desktop\Desktop\GrimHeart\GrimHeart Server\Plugins\GameServer.dll.config
+C:\Users\Star\Desktop\Desktop\GrimHeart\GrimHeart Server\Plugins\GameServer.dll
+C:\Users\Star\Desktop\Desktop\GrimHeart\GrimHeart Server\Plugins\GameServer.pdb
+C:\Users\Star\Desktop\GrimHeart\GrimHeart Server\Project\GameServer\obj\Debug\GameServer.csproj.CoreCompileInputs.cache
+C:\Users\Star\Desktop\GrimHeart\GrimHeart Server\Project\GameServer\obj\Debug\GameServer.dll
+C:\Users\Star\Desktop\GrimHeart\GrimHeart Server\Project\GameServer\obj\Debug\GameServer.pdb
+C:\Users\Star\Desktop\GrimHeart\GrimHeart Server\Project\GameServer\obj\Debug\GameServer.csprojResolveAssemblyReference.cache

@@ -1,0 +1,54 @@
+[Trace]   DarkRiftServer        System Details:
+                                	OS: Microsoft Windows NT 6.2.9200.0
+                                	CLS Version: 4.0.30319.42000
+                                	DarkRift: 2.0.0.0 - Free
+[Trace]   PluginFactory         Created plugin 'GrimHeart'.
+[Trace]   PluginManagerBase     Plugin 'GrimHeart' has requested that DarkRift operates in thread safe mode.
+[Trace]   DarkRiftServer        Switched into thread safe mode. Expect lower performance!
+[Info]    PluginManagerBase     Loaded plugin GrimHeart version 1.0.0
+[Trace]   PluginFactory         Created plugin 'Main'.
+[Trace]   PluginManagerBase     Plugin 'Main' has requested that DarkRift operates in thread safe mode.
+[Trace]   DarkRiftServer        Switched into thread safe mode. Expect lower performance!
+[Info]    PluginManagerBase     Loaded plugin Main version 1.0.0
+[Trace]   NetworkListener       Starting standard listener.
+[Info]    DarkRiftServer        Server mounted, listening on port 4296.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:52280.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:54612.
+[Info]    ClientManager         New client [0] connected [127.0.0.1:52280|54612].
+[Info]    ClientManager         Client [0] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:52292.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:52918.
+[Info]    ClientManager         New client [1] connected [127.0.0.1:52292|52918].
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:52296.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:52569.
+[Info]    ClientManager         New client [2] connected [127.0.0.1:52296|52569].
+[Info]    ClientManager         Client [1] disconnected.
+[Info]    ClientManager         Client [2] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:52303.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:64030.
+[Info]    ClientManager         New client [3] connected [127.0.0.1:52303|64030].
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:52305.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:64031.
+[Info]    ClientManager         New client [4] connected [127.0.0.1:52305|64031].
+[Error]   Client                An plugin encountered an error whilst handling the MessageReceived event.
+                                 MySql.Data.MySqlClient.MySqlException (0x80004005): There is already an open DataReader associated with this Connection which must be closed first.
+                                    at MySql.Data.MySqlClient.Interceptors.ExceptionInterceptor.Throw(Exception exception)
+                                    at MySql.Data.MySqlClient.MySqlCommand.Throw(Exception ex)
+                                    at MySql.Data.MySqlClient.MySqlCommand.CheckState()
+                                    at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+                                    at Main.messageReceived(Object sender, MessageReceivedEventArgs con) in C:\Users\Star\source\repos\WoTServer\LoginServer\Main.cs:line 154
+                                    at DarkRift.Server.Client.HandleIncomingMessage(Message message, SendMode sendMode)
+[Error]   Client                An plugin encountered an error whilst handling the MessageReceived event.
+                                 System.Exception: No current query in data reader
+                                    at MySql.Data.MySqlClient.MySqlDataReader.Throw(Exception ex)
+                                    at MySql.Data.MySqlClient.MySqlDataReader.GetValue(Int32 i)
+                                    at Main.messageReceived(Object sender, MessageReceivedEventArgs con) in C:\Users\Star\source\repos\WoTServer\LoginServer\Main.cs:line 168
+                                    at DarkRift.Server.Client.HandleIncomingMessage(Message message, SendMode sendMode)
+[Info]    ClientManager         Client [3] disconnected.
+[Info]    ClientManager         Client [4] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:52317.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:60103.
+[Info]    ClientManager         New client [5] connected [127.0.0.1:52317|60103].
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:52321.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:52880.
+[Info]    ClientManager         New client [6] connected [127.0.0.1:52321|52880].

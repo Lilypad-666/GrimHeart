@@ -1,0 +1,54 @@
+[Trace]   DarkRiftServer        System Details:
+                                	OS: Microsoft Windows NT 6.2.9200.0
+                                	CLS Version: 4.0.30319.42000
+                                	DarkRift: 2.0.0.0 - Free
+[Trace]   PluginFactory         Created plugin 'GrimHeart'.
+[Trace]   PluginManagerBase     Plugin 'GrimHeart' has requested that DarkRift operates in thread safe mode.
+[Trace]   DarkRiftServer        Switched into thread safe mode. Expect lower performance!
+[Info]    PluginManagerBase     Loaded plugin GrimHeart version 1.0.0
+[Trace]   PluginFactory         Created plugin 'Main'.
+[Trace]   PluginManagerBase     Plugin 'Main' has requested that DarkRift operates in thread safe mode.
+[Trace]   DarkRiftServer        Switched into thread safe mode. Expect lower performance!
+[Info]    PluginManagerBase     Loaded plugin Main version 1.0.0
+[Trace]   NetworkListener       Starting standard listener.
+[Info]    DarkRiftServer        Server mounted, listening on port 4296.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:53451.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:59253.
+[Info]    ClientManager         New client [0] connected [127.0.0.1:53451|59253].
+[Info]    ClientManager         Client [0] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:53470.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:55934.
+[Info]    ClientManager         New client [1] connected [127.0.0.1:53470|55934].
+[Info]    ClientManager         Client [1] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:53475.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:53551.
+[Info]    ClientManager         New client [2] connected [127.0.0.1:53475|53551].
+[Info]    ClientManager         Client [2] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:53479.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:56679.
+[Info]    ClientManager         New client [3] connected [127.0.0.1:53479|56679].
+[Info]    ClientManager         Client [3] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:53486.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:56693.
+[Info]    ClientManager         New client [4] connected [127.0.0.1:53486|56693].
+[Info]    ClientManager         Client [4] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:53492.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:63689.
+[Info]    ClientManager         New client [5] connected [127.0.0.1:53492|63689].
+[Info]    ClientManager         Client [5] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:53495.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:60481.
+[Info]    ClientManager         New client [6] connected [127.0.0.1:53495|60481].
+[Info]    ClientManager         Client [6] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:53513.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:53367.
+[Info]    ClientManager         New client [7] connected [127.0.0.1:53513|53367].
+[Error]   Client                An plugin encountered an error whilst handling the MessageReceived event.
+                                 MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'session' in 'where clause'
+                                    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+                                    at MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+                                    at MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+                                    at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+                                    at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+                                    at Main.messageReceived(Object sender, MessageReceivedEventArgs con) in C:\Users\Star\source\repos\WoTServer\LoginServer\Main.cs:line 317
+                                    at DarkRift.Server.Client.HandleIncomingMessage(Message message, SendMode sendMode)

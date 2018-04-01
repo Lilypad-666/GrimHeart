@@ -1,0 +1,4 @@
+LICENCE
+----------
+Thank you for using Looader. 
+Kit contains all necessary scripts and sprites for ready to use in commercial purposes.

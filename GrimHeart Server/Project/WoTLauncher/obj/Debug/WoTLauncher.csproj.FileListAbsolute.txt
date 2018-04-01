@@ -1,0 +1,11 @@
+C:\Users\Star\source\repos\WoTServer\WoTLauncher\bin\Debug\WoTLauncher.exe.config
+C:\Users\Star\source\repos\WoTServer\WoTLauncher\bin\Debug\WoTLauncher.exe
+C:\Users\Star\source\repos\WoTServer\WoTLauncher\bin\Debug\WoTLauncher.pdb
+C:\Users\Star\source\repos\WoTServer\WoTLauncher\obj\Debug\WoTLauncher.csprojResolveAssemblyReference.cache
+C:\Users\Star\source\repos\WoTServer\WoTLauncher\obj\Debug\WoTLauncher.csproj.CoreCompileInputs.cache
+C:\Users\Star\source\repos\WoTServer\WoTLauncher\obj\Debug\WoTLauncher.exe
+C:\Users\Star\source\repos\WoTServer\WoTLauncher\obj\Debug\WoTLauncher.pdb
+C:\Users\Star\source\repos\WoTServer\WoTLauncher\bin\Debug\DarkRift.dll
+C:\Users\Star\source\repos\WoTServer\WoTLauncher\bin\Debug\DarkRift.xml
+C:\Users\Star\source\repos\WoTServer\WoTLauncher\bin\Debug\DarkRift.Server.dll
+C:\Users\Star\source\repos\WoTServer\WoTLauncher\bin\Debug\DarkRift.Server.xml

@@ -1,0 +1,7 @@
+C:\Users\Star\Desktop\WoT 2.0 Server\Plugins\WoTPlugin.dll.config
+C:\Users\Star\Desktop\WoT 2.0 Server\Plugins\WoTPlugin.dll
+C:\Users\Star\Desktop\WoT 2.0 Server\Plugins\WoTPlugin.pdb
+C:\Users\Star\source\repos\WoTServer\WoTServer\obj\Debug\WoTServer.csproj.CoreCompileInputs.cache
+C:\Users\Star\source\repos\WoTServer\WoTServer\obj\Debug\WoTPlugin.dll
+C:\Users\Star\source\repos\WoTServer\WoTServer\obj\Debug\WoTPlugin.pdb
+C:\Users\Star\source\repos\WoTServer\WoTServer\obj\Debug\WoTServer.csprojResolveAssemblyReference.cache
