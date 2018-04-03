@@ -87,7 +87,6 @@ class MainMenuController : MonoBehaviour {
 
                     if (!sessionKey.Equals("")) {
                         HandleTextFile.writeTextToFile("session", sessionKey);
-                        Debug.Log("Wrote session key to file. Key: " + sessionKey);
                     }
 
                     mainMenuText.text = "Signed In as " + UserAccount.username;

@@ -12,7 +12,8 @@ public class Player {
     public int world { get; set; }
     public float x { get; set; }
     public float y { get; set; }
-    public Item[] items;
+    public long[] items;
+    public long[] equips;
 
     public Player(IClient client, int ID, String name, int world, float x, float y) {
         this.client = client;
@@ -21,14 +22,20 @@ public class Player {
         this.world = world;
         this.x = x;
         this.y = y;
-        items = new Item[9];
+        items = new long[9];
 
         for (int i = 0; i < items.Length; i++) {
-            items[i] = new Item(ItemTags.None);
+            items[i] = -1;
+        }
+
+        equips = new long[4];
+
+        for (int i = 0; i < equips.Length; i++) {
+            equips[i] = -1;
         }
     }
 
-    public Player(IClient client, int ID, String name, int world, float x, float y, Item[] items) {
+    public Player(IClient client, int ID, String name, int world, float x, float y, long[] items, long[] equips) {
         this.client = client;
         this.ID = ID;
         this.name = name;
@@ -36,5 +43,6 @@ public class Player {
         this.x = x;
         this.y = y;
         this.items = items;
+        this.equips = equips;
     }
 }

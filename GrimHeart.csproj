@@ -300,7 +300,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="GrimHeart.Plugins.csproj">
-      <Project>{5E971B1C-DFBF-2AD4-7E43-F940F7388908}</Project>
+      <Project>{4274EF46-7382-A725-B467-49768A59AD1C}</Project>
       <Name>GrimHeart.Plugins</Name>
     </ProjectReference>
   </ItemGroup>
@@ -318,6 +318,7 @@
     <Compile Include="Assets\Looader\Scripts\LO_SelectStyle.cs" />
     <Compile Include="Assets\Scripts\BulletScript.cs" />
     <Compile Include="Assets\Scripts\CubeTexture.cs" />
+    <Compile Include="Assets\Scripts\EnemyScript.cs" />
     <Compile Include="Assets\Scripts\Entity.cs" />
     <Compile Include="Assets\Scripts\HandleTextFile.cs" />
     <Compile Include="Assets\Scripts\LUI Scripts\LUI_BrightnessAdjustment.cs" />
@@ -346,6 +347,7 @@
     <Compile Include="Assets\Scripts\UI\Item.cs" />
     <Compile Include="Assets\Scripts\UI\ItemDragHandler.cs" />
     <Compile Include="Assets\Scripts\UI\ItemDropHandler.cs" />
+    <Compile Include="Assets\Scripts\UI\ItemUI.cs" />
     <Compile Include="Assets\Scripts\UI\TabBetweenInputs.cs" />
     <Compile Include="Assets\Scripts\UserAccount.cs" />
   </ItemGroup>

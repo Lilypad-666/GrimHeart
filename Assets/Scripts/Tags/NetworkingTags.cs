@@ -19,4 +19,6 @@
     public static readonly ushort InGame = 17;
     public static readonly ushort ControllableSpawnPlayer = 18;
     public static readonly ushort SessionLogIn = 19;
+    public static readonly ushort SpawnEnemy = 20;
+    public static readonly ushort HitEnemy = 21;
 }

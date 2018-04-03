@@ -87,6 +87,8 @@
     <Compile Include="Player.cs" />
     <Compile Include="Mapping\RootObject.cs" />
     <Compile Include="Tags\ItemTags.cs" />
+    <Compile Include="Tags\ItemStats.cs" />
+    <Compile Include="Tags\WeaponTypes.cs" />
     <Compile Include="World.cs" />
     <Compile Include="GrimHeart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

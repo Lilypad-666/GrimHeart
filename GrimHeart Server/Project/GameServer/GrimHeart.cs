@@ -17,6 +17,7 @@ public class GrimHeart : Plugin {
 
     public static Dictionary<int, World> worlds = new Dictionary<int, World>();
     public static Dictionary<int, Player> players = new Dictionary<int, Player>();
+    public static Dictionary<long, Item> items = new Dictionary<long, Item>();
 
     public override bool ThreadSafe => false;
 
@@ -26,25 +27,22 @@ public class GrimHeart : Plugin {
 
     public MySqlConnector MySQL;
 
+    public static Random r = new Random();
+
     public GrimHeart(PluginLoadData pluginLoadData) : base(pluginLoadData) {
         //Convert map to 2d array, and put in new world
         worlds.Add(0, new World(getMapFromFile(JObject.Parse(File.ReadAllText(".\\Maps\\Erden.json")))));
 
         Heartbeat.startHeartbeat();
 
+
         Console.WriteLine("Started Game Server");
 
         GrimHeartReference = this;
     }
 
-    public void loadingChar(int AccountID, string AccountName, IClient Client, int[] items) {
+    public void loadingChar(int AccountID, string AccountName, IClient Client, long[] items, long[] equips) {
         Random r = new Random();
-        Item[] startingItems = new Item[9];
-
-        for (int i = 0; i < startingItems.Length; i++) {
-            startingItems[i] = new Item(items[i]);
-        }
-
         Player newPlayer = new Player(
             Client,
             AccountID,
@@ -52,8 +50,13 @@ public class GrimHeart : Plugin {
             0,
             15 + (float)r.NextDouble() * MAP_WIDTH - MAP_WIDTH / 2,
             5 + (float)r.NextDouble() * MAP_WIDTH - MAP_WIDTH / 2,
-            startingItems
+            items,
+            equips
         );
+
+        for (int i = 0; i < items.Length; i++) {
+            Console.WriteLine(items[i]);
+        }
 
         players.Add(Client.ID, newPlayer);
         worlds[0].addPlayer(Client, newPlayer);
@@ -76,17 +79,17 @@ public class GrimHeart : Plugin {
                     if (player != players[Client.ID]) {
                         client.SendMessage(playerMessage, SendMode.Reliable);
                     }
-                    
+
                 }
             }
         }
 
         //Send the controllable char to new player
         using (DarkRiftWriter newPlayerWriter = DarkRiftWriter.Create()) {
-                newPlayerWriter.Write(newPlayer.ID);
-                newPlayerWriter.Write(newPlayer.x);
-                newPlayerWriter.Write(newPlayer.y);
-            
+            newPlayerWriter.Write(newPlayer.ID);
+            newPlayerWriter.Write(newPlayer.x);
+            newPlayerWriter.Write(newPlayer.y);
+
 
             using (Message newPlayerMessage = Message.Create(Tags.ControllableSpawnPlayer, newPlayerWriter))
                 Client.SendMessage(newPlayerMessage, SendMode.Reliable);
@@ -123,13 +126,17 @@ public class GrimHeart : Plugin {
                 Client.SendMessage(mapMessage, SendMode.Reliable);
         }
 
-        Item[] bag = new Item[6];
+        Enemy newEnemy = new Enemy(15 + ((float)r.NextDouble() * MAP_WIDTH - MAP_WIDTH / 2), 5 + ((float)r.NextDouble() * MAP_WIDTH - MAP_WIDTH / 2));
+        worlds[0].addEnemy(newEnemy);
+        worlds[newPlayer.world].sendEnemies(Client);
+
+        /*Item[] bag = new Item[6];
         for (int i = 0; i < bag.Length; i++) {
-            bag[i] = new Item(ItemTags.None);
+            bag[i] = new Item(ItemTags.None, 0);
         }
-        bag[r.Next(0, 6)].setType(ItemTags.DarkPotion);
+
         worlds[0].addBag(new Bag(15 + ((float)r.NextDouble() * MAP_WIDTH - MAP_WIDTH / 2), 5 + ((float)r.NextDouble() * MAP_WIDTH - MAP_WIDTH / 2), bag));
-        worlds[newPlayer.world].sendBags(Client);
+        worlds[newPlayer.world].sendBags(Client);*/
 
         sendPlayerInventory(newPlayer);
 
@@ -156,16 +163,22 @@ public class GrimHeart : Plugin {
 
             lock (MySqlConnector.Connection) {
                 using (MySqlCommand cmd = MySqlConnector.Connection.CreateCommand()) {
-                    cmd.CommandText = "UPDATE characters SET item1 = @slot1, item2 = @slot2, item3 = @slot3, item4 = @slot4, item5 = @slot5, item6 = @slot6, item7 = @slot7, item8 = @slot8, item9 = @slot9 WHERE dead = 0 AND accountid = @accountid";
-                    cmd.Parameters.AddWithValue("@slot1", player.items[0].getType());
-                    cmd.Parameters.AddWithValue("@slot2", player.items[1].getType());
-                    cmd.Parameters.AddWithValue("@slot3", player.items[2].getType());
-                    cmd.Parameters.AddWithValue("@slot4", player.items[3].getType());
-                    cmd.Parameters.AddWithValue("@slot5", player.items[4].getType());
-                    cmd.Parameters.AddWithValue("@slot6", player.items[5].getType());
-                    cmd.Parameters.AddWithValue("@slot7", player.items[6].getType());
-                    cmd.Parameters.AddWithValue("@slot8", player.items[7].getType());
-                    cmd.Parameters.AddWithValue("@slot9", player.items[8].getType());
+                    cmd.CommandText = "UPDATE characters SET item1 = @slot1, item2 = @slot2, item3 = @slot3, item4 = @slot4, item5 = @slot5, item6 = @slot6," +
+                        "item7 = @slot7, item8 = @slot8, item9 = @slot9, equip1 = @equip1, equip2 = @equip2, equip3 = @equip3," +
+                        "equip4 = @equip4 WHERE dead = 0 AND accountid = @accountid";
+                    cmd.Parameters.AddWithValue("@slot1", player.items[0]);
+                    cmd.Parameters.AddWithValue("@slot2", player.items[1]);
+                    cmd.Parameters.AddWithValue("@slot3", player.items[2]);
+                    cmd.Parameters.AddWithValue("@slot4", player.items[3]);
+                    cmd.Parameters.AddWithValue("@slot5", player.items[4]);
+                    cmd.Parameters.AddWithValue("@slot6", player.items[5]);
+                    cmd.Parameters.AddWithValue("@slot7", player.items[6]);
+                    cmd.Parameters.AddWithValue("@slot8", player.items[7]);
+                    cmd.Parameters.AddWithValue("@slot9", player.items[8]);
+                    cmd.Parameters.AddWithValue("@equip1", player.equips[0]);
+                    cmd.Parameters.AddWithValue("@equip2", player.equips[1]);
+                    cmd.Parameters.AddWithValue("@equip3", player.equips[2]);
+                    cmd.Parameters.AddWithValue("@equip4", player.equips[3]);
                     cmd.Parameters.AddWithValue("@accountid", player.ID);
 
                     cmd.ExecuteNonQuery();
@@ -178,7 +191,7 @@ public class GrimHeart : Plugin {
         using (Message message = con.GetMessage() as Message) {
             //If it's a movement tag
             if (message.Tag == Tags.MovePlayer) {
-                
+
                 using (DarkRiftReader reader = message.GetReader()) {
                     //Get the X and Y
                     float newX = reader.ReadSingle();
@@ -235,62 +248,107 @@ public class GrimHeart : Plugin {
 
             if (message.Tag == Tags.MoveItem) {
                 using (DarkRiftReader reader = message.GetReader()) {
-                    int id = reader.ReadInt32();
+                    int bagid = reader.ReadInt32();
                     byte from = reader.ReadByte();
                     byte to = reader.ReadByte();
-                    int fromItem = reader.ReadInt32();
-                    int toItem = reader.ReadInt32();
+                    long fromid = reader.ReadInt64();
+                    int toid = reader.ReadInt32();
 
                     //If from and to are a valid item
-                    if (validItem(from, fromItem, id, players[con.Client.ID]) && validItem(to, toItem, id, players[con.Client.ID])) {
-                        moveItem(from, fromItem, to, toItem, id, players[con.Client.ID]);
-                        if (id != -1)
-                            updateBag(id, players[con.Client.ID].world);
+                    if (validItem(from, fromid, bagid, players[con.Client.ID]) && validItem(to, toid, bagid, players[con.Client.ID])) {
+                        moveItem(from, fromid, to, toid, bagid, players[con.Client.ID]);
+                        if (bagid != -1)
+                            updateBag(bagid, players[con.Client.ID].world);
                     } else {
                         sendPlayerInventory(players[con.Client.ID]);
-                        if (id != -1)
-                            updateBag(id, players[con.Client.ID]);
+                        if (bagid != -1)
+                            updateBag(bagid, players[con.Client.ID]);
                     }
                 }
             }
         }
     }
 
-    public bool validItem(byte slot, int item, int bagIndex, Player player) {
+    public bool validItem(byte slot, long itemid, int bagid, Player player) {
         //In inventory
         if (slot <= 8) {
-            return (player.items[slot].getType() == item);
+            Console.WriteLine(player.items[slot] + ", " + itemid);
+            return (player.items[slot] == itemid);
+        } else if (slot <= 14) {
+            return (worlds[player.world].bags[bagid].items[slot - 9] == itemid);
+        } else {
+            return (player.equips[slot - 15] == itemid);
         }
-        return (worlds[player.world].bags[bagIndex].items[slot - 9].getType() == item);
     }
 
-    public void moveItem(byte from, int fromItem, byte to, int toItem, int bagIndex, Player player) {
-        //Player inventory. move the "to" item to the "from" slot
-        if (to <= 8) {
-            player.items[to].setType(fromItem);
+    public void moveItem(byte fromSlot, long fromid, byte toSlot, long toid, int bagid, Player player) {
+        //Player inventory. move the "from" item to the "to" slot
+        if (toSlot <= 8) {
+            Console.WriteLine(player.items[toSlot] + " vs " + fromid);
+            player.items[toSlot] = fromid;
+        } else if (toSlot <= 14) {
+            worlds[player.world].bags[bagid].items[toSlot - 9] = fromid;
         } else {
-            worlds[player.world].bags[bagIndex].items[to - 9].setType(fromItem);
+            player.equips[toSlot - 15] = fromid;
         }
 
         //Player inventory. move the "from" item to the "to" slot
-        if (from <= 8) {
-            player.items[from].setType(toItem);
+        if (fromSlot <= 8) {
+            player.items[fromSlot] = toid;
+        } else if (fromSlot <= 14) {
+            worlds[player.world].bags[bagid].items[fromSlot - 9] = toid;
         } else {
-            worlds[player.world].bags[bagIndex].items[from - 9].setType(toItem);
+            player.equips[fromSlot - 15] = toid;
         }
     }
 
     public void sendPlayerInventory(Player player) {
+        Console.WriteLine("Sending Player Inv");
         using (DarkRiftWriter writer = DarkRiftWriter.Create()) {
-            Item[] items = player.items;
             for (int i = 0; i < 9; i++) {
-                writer.Write(items[i].getType());
+                if (player.items[i] == -1 || player.items[i] == 0) {
+                    writer.Write(-1L);
+                    writer.Write(-1);
+                    writer.Write(-1);
+                    writer.Write(-1);
+                    writer.Write(-1);
+                    writer.Write(-1);
+                    writer.Write(-1);
+                } else {
+                    writer.Write(items[player.items[i]].id);
+                    writer.Write(items[player.items[i]].type);
+                    writer.Write(items[player.items[i]].minDamage);
+                    writer.Write(items[player.items[i]].maxDamage);
+                    writer.Write(items[player.items[i]].rarity);
+                    writer.Write(items[player.items[i]].range);
+                    writer.Write(items[player.items[i]].fireRate);
+                }
+            }
+
+            for (int i = 0; i < 4; i++) {
+                if (player.equips[i] == -1 || player.equips[i] == 0) {
+                    writer.Write(-1L);
+                    writer.Write(-1);
+                    writer.Write(-1);
+                    writer.Write(-1);
+                    writer.Write(-1);
+                    writer.Write(-1);
+                    writer.Write(-1);
+                } else {
+                    writer.Write(items[player.equips[i]].id);
+                    writer.Write(items[player.equips[i]].type);
+                    writer.Write(items[player.equips[i]].minDamage);
+                    writer.Write(items[player.equips[i]].maxDamage);
+                    writer.Write(items[player.equips[i]].rarity);
+                    writer.Write(items[player.equips[i]].range);
+                    writer.Write(items[player.equips[i]].fireRate);
+                }
             }
 
             using (Message message = Message.Create(Tags.SendInv, writer)) {
-                    IClient client = player.client;
-                    client.SendMessage(message, SendMode.Reliable);
-                
+                IClient client = player.client;
+                client.SendMessage(message, SendMode.Reliable);
+
             }
         }
     }
@@ -300,7 +358,13 @@ public class GrimHeart : Plugin {
             writer.Write(bagID);
             Bag bag = worlds[player.world].bags[bagID];
             for (int i = 0; i < 6; i++) {
-                writer.Write(bag.items[i].getType());
+                writer.Write(bag.items[i]);
+                writer.Write(items[bag.items[i]].type);
+                writer.Write(items[bag.items[i]].minDamage);
+                writer.Write(items[bag.items[i]].maxDamage);
+                writer.Write(items[bag.items[i]].rarity);
+                writer.Write(items[bag.items[i]].range);
+                writer.Write(items[bag.items[i]].fireRate);
             }
 
             using (Message message = Message.Create(Tags.UpdateBag, writer)) {
@@ -315,10 +379,15 @@ public class GrimHeart : Plugin {
             Bag bag = worlds[world].bags[bagID];
             bool empty = true;
             for (int i = 0; i < 6; i++) {
-                if (bag.items[i].getType() != ItemTags.None) {
+                if (items[bag.items[i]].type != ItemTags.None) {
                     empty = false;
                 }
-                writer.Write(bag.items[i].getType());
+                writer.Write(items[bag.items[i]].type);
+                writer.Write(items[bag.items[i]].minDamage);
+                writer.Write(items[bag.items[i]].maxDamage);
+                writer.Write(items[bag.items[i]].rarity);
+                writer.Write(items[bag.items[i]].range);
+                writer.Write(items[bag.items[i]].fireRate);
             }
 
             if (empty) {
@@ -340,7 +409,7 @@ public class GrimHeart : Plugin {
                 using (Message message = Message.Create(Tags.UpdateBag, writer)) {
                     foreach (Player player2 in worlds[world].players.Values) {
                         IClient client = player2.client;
-                        
+
                         client.SendMessage(message, SendMode.Reliable);
                     }
                 }

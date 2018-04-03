@@ -1,0 +1,69 @@
+[Trace]   DarkRiftServer        System Details:
+                                	OS: Microsoft Windows NT 6.2.9200.0
+                                	CLS Version: 4.0.30319.42000
+                                	DarkRift: 2.0.0.0 - Free
+[Trace]   PluginFactory         Created plugin 'GrimHeart'.
+[Trace]   PluginManagerBase     Plugin 'GrimHeart' has requested that DarkRift operates in thread safe mode.
+[Trace]   DarkRiftServer        Switched into thread safe mode. Expect lower performance!
+[Info]    PluginManagerBase     Loaded plugin GrimHeart version 1.0.0
+[Trace]   PluginFactory         Created plugin 'Main'.
+[Trace]   PluginManagerBase     Plugin 'Main' has requested that DarkRift operates in thread safe mode.
+[Trace]   DarkRiftServer        Switched into thread safe mode. Expect lower performance!
+[Info]    PluginManagerBase     Loaded plugin Main version 1.0.0
+[Trace]   NetworkListener       Starting standard listener.
+[Info]    DarkRiftServer        Server mounted, listening on port 4296.
+[Trace]   CommandEngine         Command entered: 'sniffer add -a'
+[Info]    Sniffer               Now sniffing all
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:65269.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:56426.
+[Info]    ClientManager         New client [0] connected [127.0.0.1:65269|56426].
+[Info]    Sniffer               [0] Message with tag '19' and 68 bytes of data.
+[Info]    Sniffer               [0] Message with tag '16' and 0 bytes of data.
+[Info]    Sniffer               [0] Message with tag '17' and 0 bytes of data.
+[Info]    ClientManager         Client [0] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:65309.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:65374.
+[Info]    ClientManager         New client [1] connected [127.0.0.1:65309|65374].
+[Info]    Sniffer               [1] Message with tag '19' and 68 bytes of data.
+[Info]    Sniffer               [1] Message with tag '16' and 0 bytes of data.
+[Info]    Sniffer               [1] Message with tag '17' and 0 bytes of data.
+[Info]    ClientManager         Client [1] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:65313.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:57245.
+[Info]    ClientManager         New client [2] connected [127.0.0.1:65313|57245].
+[Info]    Sniffer               [2] Message with tag '19' and 68 bytes of data.
+[Info]    Sniffer               [2] Message with tag '16' and 0 bytes of data.
+[Info]    Sniffer               [2] Message with tag '17' and 0 bytes of data.
+[Info]    ClientManager         Client [2] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:65316.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:61805.
+[Info]    ClientManager         New client [3] connected [127.0.0.1:65316|61805].
+[Info]    Sniffer               [3] Message with tag '19' and 68 bytes of data.
+[Info]    Sniffer               [3] Message with tag '16' and 0 bytes of data.
+[Info]    Sniffer               [3] Message with tag '17' and 0 bytes of data.
+[Info]    ClientManager         Client [3] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:65318.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:65370.
+[Info]    ClientManager         New client [4] connected [127.0.0.1:65318|65370].
+[Info]    Sniffer               [4] Message with tag '19' and 68 bytes of data.
+[Info]    Sniffer               [4] Message with tag '16' and 0 bytes of data.
+[Info]    Sniffer               [4] Message with tag '17' and 0 bytes of data.
+[Info]    Sniffer               [4] Message with tag '4' and 12 bytes of data.
+[Info]    Sniffer               [4] Message with tag '4' and 12 bytes of data.
+[Info]    Sniffer               [4] Message with tag '9' and 14 bytes of data.
+[Info]    ClientManager         Client [4] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:65334.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:65190.
+[Info]    ClientManager         New client [5] connected [127.0.0.1:65334|65190].
+[Info]    Sniffer               [5] Message with tag '19' and 68 bytes of data.
+[Info]    Sniffer               [5] Message with tag '16' and 0 bytes of data.
+[Info]    Sniffer               [5] Message with tag '17' and 0 bytes of data.
+[Info]    Sniffer               [5] Message with tag '4' and 12 bytes of data.
+[Info]    Sniffer               [5] Message with tag '9' and 14 bytes of data.
+[Info]    Sniffer               [5] Message with tag '4' and 12 bytes of data.
+[Info]    Sniffer               [5] Message with tag '9' and 14 bytes of data.
+[Info]    Sniffer               [5] Message with tag '4' and 12 bytes of data.
+[Info]    Sniffer               [5] Message with tag '9' and 14 bytes of data.
+[Info]    Sniffer               [5] Message with tag '4' and 12 bytes of data.
+[Info]    Sniffer               [5] Message with tag '4' and 12 bytes of data.
+[Info]    Sniffer               [5] Message with tag '9' and 14 bytes of data.

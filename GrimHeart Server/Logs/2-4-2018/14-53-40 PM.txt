@@ -1,0 +1,17 @@
+[Trace]   DarkRiftServer        System Details:
+                                	OS: Microsoft Windows NT 6.2.9200.0
+                                	CLS Version: 4.0.30319.42000
+                                	DarkRift: 2.0.0.0 - Free
+[Trace]   PluginFactory         Created plugin 'GrimHeart'.
+[Trace]   PluginManagerBase     Plugin 'GrimHeart' has requested that DarkRift operates in thread safe mode.
+[Trace]   DarkRiftServer        Switched into thread safe mode. Expect lower performance!
+[Info]    PluginManagerBase     Loaded plugin GrimHeart version 1.0.0
+[Trace]   PluginFactory         Created plugin 'Main'.
+[Trace]   PluginManagerBase     Plugin 'Main' has requested that DarkRift operates in thread safe mode.
+[Trace]   DarkRiftServer        Switched into thread safe mode. Expect lower performance!
+[Info]    PluginManagerBase     Loaded plugin Main version 1.0.0
+[Trace]   NetworkListener       Starting standard listener.
+[Info]    DarkRiftServer        Server mounted, listening on port 4296.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:49222.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:55967.
+[Info]    ClientManager         New client [0] connected [127.0.0.1:49222|55967].

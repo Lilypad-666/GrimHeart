@@ -207,6 +207,7 @@ namespace DarkRift.Client.Unity
 
             if (!Connected) {
                 if (disconnected) {
+                    Destroy(this.gameObject);
                     SceneManager.LoadScene("MainMenu");
                     disconnected = false;
                 }

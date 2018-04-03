@@ -1,0 +1,122 @@
+[Trace]   DarkRiftServer        System Details:
+                                	OS: Microsoft Windows NT 6.2.9200.0
+                                	CLS Version: 4.0.30319.42000
+                                	DarkRift: 2.0.0.0 - Free
+[Trace]   PluginFactory         Created plugin 'GrimHeart'.
+[Trace]   PluginManagerBase     Plugin 'GrimHeart' has requested that DarkRift operates in thread safe mode.
+[Trace]   DarkRiftServer        Switched into thread safe mode. Expect lower performance!
+[Info]    PluginManagerBase     Loaded plugin GrimHeart version 1.0.0
+[Trace]   PluginFactory         Created plugin 'Main'.
+[Trace]   PluginManagerBase     Plugin 'Main' has requested that DarkRift operates in thread safe mode.
+[Trace]   DarkRiftServer        Switched into thread safe mode. Expect lower performance!
+[Info]    PluginManagerBase     Loaded plugin Main version 1.0.0
+[Trace]   NetworkListener       Starting standard listener.
+[Info]    DarkRiftServer        Server mounted, listening on port 4296.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:51654.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:51101.
+[Info]    ClientManager         New client [0] connected [127.0.0.1:51654|51101].
+[Info]    ClientManager         Client [0] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:51661.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:56301.
+[Info]    ClientManager         New client [1] connected [127.0.0.1:51661|56301].
+[Info]    ClientManager         Client [1] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:51665.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:63227.
+[Info]    ClientManager         New client [2] connected [127.0.0.1:51665|63227].
+[Info]    ClientManager         Client [2] disconnected: ConnectionReset.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:51694.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:62441.
+[Info]    ClientManager         New client [3] connected [127.0.0.1:51694|62441].
+[Info]    ClientManager         Client [3] disconnected: ConnectionReset.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:51731.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:58049.
+[Info]    ClientManager         New client [4] connected [127.0.0.1:51731|58049].
+[Info]    ClientManager         Client [4] disconnected: ConnectionReset.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:51753.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:49460.
+[Info]    ClientManager         New client [5] connected [127.0.0.1:51753|49460].
+[Info]    ClientManager         Client [5] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:51760.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:53973.
+[Info]    ClientManager         New client [6] connected [127.0.0.1:51760|53973].
+[Info]    ClientManager         Client [6] disconnected: ConnectionReset.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:51805.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:55145.
+[Info]    ClientManager         New client [7] connected [127.0.0.1:51805|55145].
+[Info]    ClientManager         Client [7] disconnected: ConnectionReset.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:51826.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:54573.
+[Info]    ClientManager         New client [8] connected [127.0.0.1:51826|54573].
+[Info]    ClientManager         Client [8] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:51831.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:53336.
+[Info]    ClientManager         New client [9] connected [127.0.0.1:51831|53336].
+[Info]    ClientManager         Client [9] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:51842.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:50783.
+[Info]    ClientManager         New client [10] connected [127.0.0.1:51842|50783].
+[Info]    ClientManager         Client [10] disconnected: ConnectionReset.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:51878.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:52967.
+[Info]    ClientManager         New client [11] connected [127.0.0.1:51878|52967].
+[Info]    ClientManager         Client [11] disconnected: ConnectionReset.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:51904.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:62680.
+[Info]    ClientManager         New client [12] connected [127.0.0.1:51904|62680].
+[Info]    ClientManager         Client [12] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:51932.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:52408.
+[Info]    ClientManager         New client [13] connected [127.0.0.1:51932|52408].
+[Info]    ClientManager         Client [13] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:51956.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:61313.
+[Info]    ClientManager         New client [14] connected [127.0.0.1:51956|61313].
+[Info]    ClientManager         Client [14] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:51960.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:64108.
+[Info]    ClientManager         New client [15] connected [127.0.0.1:51960|64108].
+[Info]    ClientManager         Client [15] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:51966.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:51725.
+[Info]    ClientManager         New client [16] connected [127.0.0.1:51966|51725].
+[Info]    ClientManager         Client [16] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:51980.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:61839.
+[Info]    ClientManager         New client [17] connected [127.0.0.1:51980|61839].
+[Info]    ClientManager         Client [17] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:51984.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:54705.
+[Info]    ClientManager         New client [18] connected [127.0.0.1:51984|54705].
+[Info]    ClientManager         Client [18] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:51990.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:62517.
+[Info]    ClientManager         New client [19] connected [127.0.0.1:51990|62517].
+[Info]    ClientManager         Client [19] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:51995.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:58041.
+[Info]    ClientManager         New client [20] connected [127.0.0.1:51995|58041].
+[Info]    ClientManager         Client [20] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:51999.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:59126.
+[Info]    ClientManager         New client [21] connected [127.0.0.1:51999|59126].
+[Error]   Client                An plugin encountered an error whilst handling the MessageReceived event.
+                                 System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+                                    at System.ThrowHelper.ThrowKeyNotFoundException()
+                                    at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+                                    at GrimHeart.moveItem(Byte from, Int32 fromItem, Byte to, Int32 toItem, Int32 bagIndex, Player player) in C:\Users\Star\Desktop\GrimHeart\GrimHeart Server\Project\GameServer\GrimHeart.cs:line 286
+                                    at GrimHeart.messageReceived(Object sender, MessageReceivedEventArgs con) in C:\Users\Star\Desktop\GrimHeart\GrimHeart Server\Project\GameServer\GrimHeart.cs:line 253
+                                    at System.EventHandler`1.Invoke(Object sender, TEventArgs e)
+                                    at DarkRift.Server.Client.HandleIncomingMessage(Message message, SendMode sendMode)
+[Info]    ClientManager         Client [21] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:52005.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:61925.
+[Info]    ClientManager         New client [22] connected [127.0.0.1:52005|61925].
+[Error]   Client                An plugin encountered an error whilst handling the MessageReceived event.
+                                 System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+                                    at System.ThrowHelper.ThrowKeyNotFoundException()
+                                    at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+                                    at GrimHeart.moveItem(Byte from, Int32 fromItem, Byte to, Int32 toItem, Int32 bagIndex, Player player) in C:\Users\Star\Desktop\GrimHeart\GrimHeart Server\Project\GameServer\GrimHeart.cs:line 286
+                                    at GrimHeart.messageReceived(Object sender, MessageReceivedEventArgs con) in C:\Users\Star\Desktop\GrimHeart\GrimHeart Server\Project\GameServer\GrimHeart.cs:line 253
+                                    at System.EventHandler`1.Invoke(Object sender, TEventArgs e)
+                                    at DarkRift.Server.Client.HandleIncomingMessage(Message message, SendMode sendMode)
+[Info]    ClientManager         Client [22] disconnected.

@@ -20,7 +20,7 @@ public class BagCollision : MonoBehaviour {
             items = new Item[6];
 
             for (int i = 0; i < items.Length; i++) {
-                items[i] = new Item(ItemTags.None);
+                items[i] = new Item(-1, ItemTags.None, -1, -1, -1, -1, -1);
             }
         }
     }
@@ -57,26 +57,41 @@ public class BagCollision : MonoBehaviour {
         }
     }
 
-    public void updateSlot(int slot, int type) {
+    public void updateSlot(int slot, Item item) {
 
         if (items == null) {
             items = new Item[6];
 
             for (int i = 0; i < items.Length; i++) {
-                items[i] = new Item(ItemTags.None);
+                items[i] = new Item(-1, ItemTags.None, -1, -1, -1, -1, -1);
             }
         }
 
-        items[slot].setType(type);
+        items[slot].id = item.id;
+        items[slot].type = item.type;
+        items[slot].minDamage = item.minDamage;
+        items[slot].maxDamage = item.maxDamage;
+        items[slot].rarity = item.rarity;
+        items[slot].range = item.range;
+        items[slot].fireRate = item.fireRate;
     }
 
     void setBagSlots() {
         for (int i = 0; i < items.Length; i++) {
-            if (items[i].getType() != ItemTags.None) {
-                Transform ItemImage = BagInv.transform.GetChild(i).GetChild(0).GetChild(0);
+            if (items[i].type != ItemTags.None) {
+                Transform border = BagInv.transform.GetChild(i).GetChild(0);
 
-                ItemImage.GetComponent<Image>().sprite = NetworkPlayerManager.staticSprites[items[i].getType()];
-                ItemImage.GetComponent<Image>().enabled = true;
+                GameObject temp = Instantiate(NetworkPlayerManager.staticItems[items[i].type], border);
+                temp.transform.localPosition = new Vector3();
+                temp.transform.localScale = new Vector3(1, 1, 1);
+                Item tempItem = temp.GetComponentInChildren<Item>();
+                tempItem.id = items[i].id;
+                tempItem.type = items[i].type;
+                tempItem.minDamage = items[i].minDamage;
+                tempItem.maxDamage = items[i].maxDamage;
+                tempItem.rarity = items[i].rarity;
+                tempItem.range = items[i].range;
+                tempItem.fireRate = items[i].fireRate;
             }
         }
     }
@@ -84,30 +99,51 @@ public class BagCollision : MonoBehaviour {
     public void setBagSlots(Item[] newItems) {
         items = newItems;
         for (int i = 0; i < items.Length; i++) {
-            Transform ItemImage = BagInv.transform.GetChild(i).GetChild(0).GetChild(0);
-            if (items[i].getType() != ItemTags.None) {
-                ItemImage.GetComponent<Image>().sprite = NetworkPlayerManager.staticSprites[items[i].getType()];
-                ItemImage.GetComponent<Image>().enabled = true;
+            Transform border = BagInv.transform.GetChild(i).GetChild(0);
+
+            if (items[i].type != ItemTags.None) {
+                GameObject temp = Instantiate(NetworkPlayerManager.staticItems[items[i].type], border);
+                temp.transform.localPosition = new Vector3();
+                temp.transform.localScale = new Vector3(1, 1, 1);
+                Item tempItem = temp.GetComponentInChildren<Item>();
+                tempItem.id = items[i].id;
+                tempItem.type = items[i].type;
+                tempItem.minDamage = items[i].minDamage;
+                tempItem.maxDamage = items[i].maxDamage;
+                tempItem.rarity = items[i].rarity;
+                tempItem.range = items[i].range;
+                tempItem.fireRate = items[i].fireRate;
             } else {
-                ItemImage.GetComponent<Image>().sprite = null;
-                ItemImage.GetComponent<Image>().enabled = false;
+                int count = border.childCount;
+
+                for (int j = 0; j < count; j++) {
+                    Destroy(border.GetChild(j).gameObject);
+                }
             }
         }
     }
 
     void saveBagSlots() {
         for (int i = 0; i < BagInv.transform.childCount; i++) {
-            Transform ItemImage = BagInv.transform.GetChild(i).GetChild(0).GetChild(0);
-
-            //set type instead of sprite here
-            for (int j = 0; j < NetworkPlayerManager.staticSprites.Length; j++) {
-                if (ItemImage.GetComponent<Image>().sprite == NetworkPlayerManager.staticSprites[j]) {
-                    items[i].setType(j);
-                    break;
-                }
+            Transform border = BagInv.transform.GetChild(i).GetChild(0);
+            
+            if (border.childCount == 0) {
+                items[i].type = ItemTags.None;
+                items[i].id = -1;
+                items[i].minDamage = -1;
+                items[i].maxDamage = -1;
+                items[i].rarity = -1;
+                items[i].fireRate = -1;
+                items[i].range = -1;
+            } else {
+                items[i] = border.GetChild(0).GetChild(0).GetComponent<Item>();
             }
-            ItemImage.GetComponent<Image>().sprite = null;
-            ItemImage.GetComponent<Image>().enabled = false;
+
+            int count = border.childCount;
+
+            for (int j = 0; j < count; j++) {
+                Destroy(border.GetChild(j).gameObject);
+            }
         }
     }
 }

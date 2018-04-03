@@ -1,0 +1,38 @@
+[Trace]   DarkRiftServer        System Details:
+                                	OS: Microsoft Windows NT 6.2.9200.0
+                                	CLS Version: 4.0.30319.42000
+                                	DarkRift: 2.0.0.0 - Free
+[Trace]   PluginFactory         Created plugin 'GrimHeart'.
+[Trace]   PluginManagerBase     Plugin 'GrimHeart' has requested that DarkRift operates in thread safe mode.
+[Trace]   DarkRiftServer        Switched into thread safe mode. Expect lower performance!
+[Info]    PluginManagerBase     Loaded plugin GrimHeart version 1.0.0
+[Trace]   PluginFactory         Created plugin 'Main'.
+[Trace]   PluginManagerBase     Plugin 'Main' has requested that DarkRift operates in thread safe mode.
+[Trace]   DarkRiftServer        Switched into thread safe mode. Expect lower performance!
+[Info]    PluginManagerBase     Loaded plugin Main version 1.0.0
+[Trace]   NetworkListener       Starting standard listener.
+[Info]    DarkRiftServer        Server mounted, listening on port 4296.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:63285.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:49633.
+[Info]    ClientManager         New client [0] connected [127.0.0.1:63285|49633].
+[Info]    ClientManager         Client [0] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:63317.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:60910.
+[Info]    ClientManager         New client [1] connected [127.0.0.1:63317|60910].
+[Info]    ClientManager         Client [1] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:63364.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:49283.
+[Info]    ClientManager         New client [2] connected [127.0.0.1:63364|49283].
+[Info]    ClientManager         Client [2] disconnected: ConnectionReset.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:63401.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:53340.
+[Info]    ClientManager         New client [3] connected [127.0.0.1:63401|53340].
+[Info]    ClientManager         Client [3] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:63415.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:50527.
+[Info]    ClientManager         New client [4] connected [127.0.0.1:63415|50527].
+[Info]    ClientManager         Client [4] disconnected.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:63422.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:54540.
+[Info]    ClientManager         New client [5] connected [127.0.0.1:63422|54540].
+[Info]    ClientManager         Client [5] disconnected.

@@ -7,15 +7,16 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public static GameObject itemBeingDragged;
     Vector3 startPosition;
-    Transform startParent;
+    public Transform startParent;
     Transform canvas;
+
 
     public void OnBeginDrag(PointerEventData eventData) {
         itemBeingDragged = gameObject;
         startPosition = transform.position;
         startParent = transform.parent;
         canvas = GameObject.FindGameObjectWithTag("UI Canvas").transform;
-        transform.parent = canvas;
+        transform.SetParent(canvas);
     }
 
     public void OnDrag(PointerEventData eventData) {
@@ -26,7 +27,7 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         itemBeingDragged = null;
         if (transform.parent == canvas) {
             transform.position = startPosition;
-            transform.parent = startParent;
+            transform.SetParent(startParent);
         }
     }
 }

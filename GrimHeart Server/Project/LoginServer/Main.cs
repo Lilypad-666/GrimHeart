@@ -214,9 +214,13 @@ class Main : Plugin {
                     if (Password.verifyPassword(password, passHash)) {
                         //check if user is already logged in
                         foreach (Connection connection in Connections.Values) {
-                            if (connection.AccountName != "" && connection.AccountName.ToLower() == username) {
-                                sendClientError("Already logged in!", true, con.Client);
-                                return;
+                            if (connection.AccountName != null) {
+                                if (connection.AccountName != "") {
+                                    if (connection.AccountName.ToLower() == username) {
+                                        sendClientError("Already logged in!", true, con.Client);
+                                        return;
+                                    }
+                                }
                             }
                         }
 
@@ -290,17 +294,65 @@ class Main : Plugin {
 
             if (message.Tag == Tags.Play) {
                 if (Connections[con.Client].AccountID != -1) {
-                    int[] items = new int[9];
+
+                    lock (MySqlConnector.Connection) {
+                        using (MySqlCommand cmd = MySqlConnector.Connection.CreateCommand()) {
+                            cmd.CommandText = "SELECT id, ownedaccount, mindamage, maxdamage, distance, firerate, type, rarity FROM items " +
+                                "WHERE ownedaccount = @ownedaccount AND active = 1";
+                            cmd.Parameters.AddWithValue("@ownedaccount", Connections[con.Client].AccountID);
+                            using (MySqlDataReader result = cmd.ExecuteReader()) {
+                                if (result.HasRows) {
+                                    while (result.Read()) {
+                                        long id = (long)result[0];
+                                        int owner = (int)result[1];
+                                        float minDamage = (float)result[2];
+                                        float maxDamage = (float)result[3];
+                                        float distance = (float)result[4];
+                                        float speed = (float)result[5];
+                                        int type = (int)result[6];
+                                        int rarity = (int)result[7];
+                                        Item item = new Item(id, type);
+                                        item.owner = owner;
+                                        item.minDamage = minDamage;
+                                        item.maxDamage = maxDamage;
+                                        item.range = distance;
+                                        item.fireRate = speed;
+                                        item.rarity = rarity;
+                                        GrimHeart.items[id] = item;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    long[] items = new long[9];
+                    long[] equips = new long[4];
                     bool newChar = false;
                     lock (MySqlConnector.Connection) {
                         using (MySqlCommand cmd = MySqlConnector.Connection.CreateCommand()) {
-                            cmd.CommandText = "SELECT * from characters WHERE accountid = @accountid AND dead = 0";
+                            cmd.CommandText = "SELECT item1, item2, item3, item4, item5, item6, item7, item8, item9, equip1, equip2, equip3, equip4 from characters WHERE accountid = @accountid AND dead = 0";
                             cmd.Parameters.AddWithValue("@accountid", Connections[con.Client].AccountID);
                             using (MySqlDataReader result = cmd.ExecuteReader()) {
                                 if (result.HasRows) {
                                     while (result.Read()) {
                                         for (int i = 0; i < 9; i++) {
-                                            items[i] = (int)result[i + 3];
+                                            long itemid = (long)result[i];
+                                            if (itemid == -1 || itemid == 0 || GrimHeart.items.ContainsKey(itemid)) {
+                                                items[i] = itemid;
+                                            } else {
+                                                Console.WriteLine("Invalid item id! ID: " + itemid);
+                                                items[i] = -1;
+                                            }
+                                        }
+
+                                        for (int i = 0; i < 4; i++) {
+                                            long itemid = (long)result[i + 9];
+                                            if (itemid == -1 || itemid == 0 || GrimHeart.items.ContainsKey(itemid)) {
+                                                equips[i] = itemid;
+                                            } else {
+                                                Console.WriteLine("Invalid item id! ID: " + itemid);
+                                                equips[i] = -1;
+                                            }
                                         }
                                     }
                                 } else {
@@ -312,16 +364,23 @@ class Main : Plugin {
                     }
 
                     if (newChar) {
+                        for (int i = 0; i < 9; i++) {
+                            long TLeg = Item.createWeapon(Connections[con.Client].AccountID, new ItemStats.Weapon.TLeg());
+
+                            items[i] = TLeg;
+                        }
+
                         lock (MySqlConnector.Connection) {
                             using (MySqlCommand cmd = MySqlConnector.Connection.CreateCommand()) {
-                                cmd.CommandText = "INSERT INTO characters(accountid) VALUES(@accountid)";
+                                cmd.CommandText = "INSERT INTO characters(accountid, item1) VALUES(@accountid, @item1)";
                                 cmd.Parameters.AddWithValue("@accountid", Connections[con.Client].AccountID);
+                                for (int i = 1; i < 10; i++) {
+                                    cmd.Parameters.AddWithValue("@item" + i, items[i-1]);
+                                }
 
                                 cmd.ExecuteNonQuery();
                             }
                         }
-
-                        items[1] = 1;
                     }
 
                     using (DarkRiftWriter playWriter = DarkRiftWriter.Create()) {
@@ -332,7 +391,7 @@ class Main : Plugin {
 
                     Console.WriteLine("[" + Connections[con.Client].AccountID + "] " + Connections[con.Client].AccountName + " is now loading");
 
-                    GrimHeart.GrimHeartReference.loadingChar(Connections[con.Client].AccountID, Connections[con.Client].AccountName, con.Client, items);
+                    GrimHeart.GrimHeartReference.loadingChar(Connections[con.Client].AccountID, Connections[con.Client].AccountName, con.Client, items, equips);
                 }
             }
 

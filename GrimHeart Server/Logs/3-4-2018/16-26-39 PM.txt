@@ -1,0 +1,21 @@
+[Trace]   DarkRiftServer        System Details:
+                                	OS: Microsoft Windows NT 6.2.9200.0
+                                	CLS Version: 4.0.30319.42000
+                                	DarkRift: 2.0.0.0 - Free
+[Trace]   PluginFactory         Created plugin 'GrimHeart'.
+[Trace]   PluginManagerBase     Plugin 'GrimHeart' has requested that DarkRift operates in thread safe mode.
+[Trace]   DarkRiftServer        Switched into thread safe mode. Expect lower performance!
+[Info]    PluginManagerBase     Loaded plugin GrimHeart version 1.0.0
+[Trace]   PluginFactory         Created plugin 'Main'.
+[Trace]   PluginManagerBase     Plugin 'Main' has requested that DarkRift operates in thread safe mode.
+[Trace]   DarkRiftServer        Switched into thread safe mode. Expect lower performance!
+[Info]    PluginManagerBase     Loaded plugin Main version 1.0.0
+[Trace]   NetworkListener       Starting standard listener.
+[Info]    DarkRiftServer        Server mounted, listening on port 4296.
+[Trace]   NetworkListener       Accepted TCP connection from 127.0.0.1:53750.
+[Trace]   NetworkListener       Accepted UDP connection from 127.0.0.1:53338.
+[Info]    ClientManager         New client [0] connected [127.0.0.1:53750|53338].
+[Error]   Client                An plugin encountered an error whilst handling the MessageReceived event.
+                                 System.InvalidCastException: Specified cast is not valid.
+                                    at Main.messageReceived(Object sender, MessageReceivedEventArgs con) in C:\Users\Star\Desktop\GrimHeart\GrimHeart Server\Project\LoginServer\Main.cs:line 313
+                                    at DarkRift.Server.Client.HandleIncomingMessage(Message message, SendMode sendMode)

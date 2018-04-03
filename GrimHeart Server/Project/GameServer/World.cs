@@ -14,6 +14,7 @@ public class World {
     public Dictionary<int, Enemy> enemies;
     int currentBagID = 0;
     int currentBulletID = 0;
+    int currentEnemyID = 0;
     public byte[,] map;
 
     public World(byte[,] map) {
@@ -31,7 +32,7 @@ public class World {
     public int addBag(Bag bag) {
         int ID = currentBagID;
 
-        bag.setID(ID);
+        bag.id = ID;
 
         bags.Add(ID, bag);
 
@@ -43,7 +44,12 @@ public class World {
             bagSpawnWriter.Write(bag.id);
 
             for (int i = 0; i < 6; i++) {
-                bagSpawnWriter.Write(bag.items[i].getType());
+                bagSpawnWriter.Write(GrimHeart.items[bag.items[i]].type);
+                bagSpawnWriter.Write(GrimHeart.items[bag.items[i]].minDamage);
+                bagSpawnWriter.Write(GrimHeart.items[bag.items[i]].maxDamage);
+                bagSpawnWriter.Write(GrimHeart.items[bag.items[i]].rarity);
+                bagSpawnWriter.Write(GrimHeart.items[bag.items[i]].range);
+                bagSpawnWriter.Write(GrimHeart.items[bag.items[i]].fireRate);
             }
 
             using (Message bagSpawnMessage = Message.Create(Tags.SpawnBag, bagSpawnWriter)) {
@@ -66,20 +72,45 @@ public class World {
                 bagSpawnWriter.Write(bag.id);
 
                 for (int j = 0; j < 6; j++) {
-                    bagSpawnWriter.Write(bag.items[j].getType());
+                    bagSpawnWriter.Write(GrimHeart.items[bag.items[j]].type);
+                    bagSpawnWriter.Write(GrimHeart.items[bag.items[j]].minDamage);
+                    bagSpawnWriter.Write(GrimHeart.items[bag.items[j]].maxDamage);
+                    bagSpawnWriter.Write(GrimHeart.items[bag.items[j]].rarity);
+                    bagSpawnWriter.Write(GrimHeart.items[bag.items[j]].range);
+                    bagSpawnWriter.Write(GrimHeart.items[bag.items[j]].fireRate);
                 }
             }
 
             using (Message bagSpawnMessage = Message.Create(Tags.SpawnBags, bagSpawnWriter)) {
-                    client.SendMessage(bagSpawnMessage, SendMode.Reliable);
+                client.SendMessage(bagSpawnMessage, SendMode.Reliable);
             }
         }
     }
 
-    public void updateBag(int id, Item[] items) {
+    public void sendEnemies(IClient client) {
+        using (DarkRiftWriter enemySpawnWriter = DarkRiftWriter.Create()) {
+            enemySpawnWriter.Write(enemies.Count);
+
+            foreach (Enemy enemy in enemies.Values) {
+                enemySpawnWriter.Write(enemy.id);
+                enemySpawnWriter.Write(enemy.x);
+                enemySpawnWriter.Write(enemy.y);
+            }
+
+            using (Message enemySpawnMessage = Message.Create(Tags.SpawnEnemy, enemySpawnWriter)) {
+                client.SendMessage(enemySpawnMessage, SendMode.Reliable);
+            }
+        }
+    }
+
+    public int addEnemy(Enemy enemy) {
+        int ID = currentEnemyID++;
+        enemies.Add(ID, enemy);
+        return ID;
+    }
+
+    public void updateBag(int id, long[] items) {
         bags[id].items = items;
-
-
     }
 
     public void removeBag(int ID) {

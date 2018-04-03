@@ -13,31 +13,42 @@ public class NetworkPlayerManager : MonoBehaviour {
     public static UnityClient staticClient;
 
     [SerializeField]
-    [Tooltip("Prefab for the Opponent Bullet")]
-    GameObject bulletPrefab;
-
-    [SerializeField]
     [Tooltip("Prefab for a bag")]
     GameObject bagPrefab;
 
     [SerializeField]
-    [Tooltip("Sprite for item")]
-    Sprite itemSprite;
+    [Tooltip("Prefab for an enemy")]
+    GameObject enemyPrefab;
 
-    public Sprite[] sprites;
+    public GameObject[] items;
 
-    public static Sprite[] staticSprites;
+    public static GameObject[] staticItems;
 
     public GameObject[] tiles;
 
     public static GameObject[] staticTiles;
 
+    public GameObject[] defaultObjects;
+
+    public static GameObject[] staticDefaultObjects;
+
+    public Texture2D image;
+
+    public GameObject[] bullets;
+
+    public static GameObject[] staticBullets;
+
+    public static Texture2D staticImage;
+
     Dictionary<int, PlayerObject> networkPlayers = new Dictionary<int, PlayerObject>();
 
     private void Start() {
-        staticSprites = sprites;
+        staticItems = items;
         staticTiles = tiles;
         staticClient = client;
+        staticDefaultObjects = defaultObjects;
+        staticImage = image;
+        staticBullets = bullets;
 
         if (client == null) {
             client = GameObject.FindGameObjectWithTag("Network").GetComponent<UnityClient>();
@@ -50,7 +61,6 @@ public class NetworkPlayerManager : MonoBehaviour {
         }
 
         using (DarkRiftWriter writer = DarkRiftWriter.Create()) {
-            Debug.Log("Sending loaded");
             using (Message message = Message.Create(Tags.InGame, writer))
                 client.SendMessage(message, SendMode.Reliable);
         }
@@ -109,13 +119,13 @@ public class NetworkPlayerManager : MonoBehaviour {
                     Vector3 mousePos = Input.mousePosition;
                     mousePos.z = 10;
 
-                    GameObject bullet = Instantiate(bulletPrefab, new Vector2(posX, posY), bulletRotation);
+                    GameObject bullet = Instantiate(bullets[0], new Vector2(posX, posY), bulletRotation);
 
-                    BulletScript bullets = bullet.GetComponent<BulletScript>();
-                    bullets.remoteID = id;
-                    bullets.setSpeed(1f);
-                    bullets.setDuration(1f);
-                    bullets.startBullet();
+                    BulletScript bulletScript = bullet.GetComponent<BulletScript>();
+                    bulletScript.remoteID = id;
+                    bulletScript.setSpeed(1f);
+                    bulletScript.setDuration(1f);
+                    bulletScript.startBullet();
                 }
             }
 
@@ -130,8 +140,16 @@ public class NetworkPlayerManager : MonoBehaviour {
                     Item[] items = new Item[6];
 
                     for (int i = 0; i < 6; i++) {
-                        items[i] = new Item(reader.ReadInt32());
-                        bag.GetComponent<BagCollision>().updateSlot(i, items[i].getType());
+                        long itemid = reader.ReadInt64();
+                        int type = reader.ReadInt32();
+                        float minDamage = reader.ReadSingle();
+                        float maxDamage = reader.ReadSingle();
+                        int rarity = reader.ReadInt32();
+                        float range = reader.ReadSingle();
+                        float fireRate = reader.ReadSingle();
+                            
+                        items[i] = new Item(itemid, type, minDamage, maxDamage, range, fireRate, rarity);
+                        bag.GetComponent<BagCollision>().updateSlot(i, items[i]);
                     }
 
                     bag.GetComponent<BagCollision>().bagID = id;
@@ -152,8 +170,16 @@ public class NetworkPlayerManager : MonoBehaviour {
                         Item[] items = new Item[6];
 
                         for (int j = 0; j < 6; j++) {
-                            items[j] = new Item(reader.ReadInt32());
-                            bag.GetComponent<BagCollision>().updateSlot(j, items[j].getType());
+                            long itemid = reader.ReadInt64();
+                            int type = reader.ReadInt32();
+                            float minDamage = reader.ReadSingle();
+                            float maxDamage = reader.ReadSingle();
+                            int rarity = reader.ReadInt32();
+                            float range = reader.ReadSingle();
+                            float fireRate = reader.ReadSingle();
+
+                            items[j] = new Item(itemid, type, minDamage, maxDamage, range, fireRate, rarity);
+                            bag.GetComponent<BagCollision>().updateSlot(j, items[j]);
                         }
 
                         bag.GetComponent<BagCollision>().bagID = id;
@@ -171,18 +197,31 @@ public class NetworkPlayerManager : MonoBehaviour {
                     foreach (GameObject bag in bags) {
                         BagCollision bagCollision = bag.GetComponent<BagCollision>();
                         if (bagCollision.bagID == id) {
+                            long itemid = reader.ReadInt64();
+                            int type = reader.ReadInt32();
+                            float minDamage = reader.ReadSingle();
+                            float maxDamage = reader.ReadSingle();
+                            int rarity = reader.ReadInt32();
+                            float range = reader.ReadSingle();
+                            float fireRate = reader.ReadSingle();
                             //If is active on screen
                             if (BagCollision.active == bagCollision) {
                                 Item[] items = new Item[6];
 
                                 for (int i = 0; i < items.Length; i++) {
-                                    items[i] = new Item(reader.ReadInt32());
+                                    items[i] = new Item(itemid, type, minDamage, maxDamage, range, fireRate, rarity);
                                 }
 
                                 bagCollision.setBagSlots(items);  
                             } else {
                                 for (int i = 0; i < 6; i++) {
-                                    bagCollision.items[i].setType(reader.ReadInt32());
+                                    bagCollision.items[i].id = itemid;
+                                    bagCollision.items[i].type = type;
+                                    bagCollision.items[i].minDamage = minDamage;
+                                    bagCollision.items[i].maxDamage = maxDamage;
+                                    bagCollision.items[i].rarity = rarity;
+                                    bagCollision.items[i].range = range;
+                                    bagCollision.items[i].fireRate = fireRate;
                                 }
                             }
 
@@ -210,18 +249,105 @@ public class NetworkPlayerManager : MonoBehaviour {
                 using (DarkRiftReader reader = message.GetReader()) {
                     GameObject inventory = GameObject.FindGameObjectWithTag("Inventory");
                     for (int i = 0; i < 9; i++) {
-                        int item = reader.ReadInt32();
+                        long id = reader.ReadInt64();
+                        int type = reader.ReadInt32();
+                        float minDamage = reader.ReadSingle();
+                        float maxDamage = reader.ReadSingle();
+                        int rarity = reader.ReadInt32();
+                        float range = reader.ReadSingle();
+                        float fireRate = reader.ReadSingle();
                         Transform slot = inventory.transform.GetChild(i);
-                        Image image = slot.GetChild(0).GetChild(0).GetComponent<Image>();
+                        Transform border = slot.GetChild(0);
 
-                        if (item == ItemTags.None) {
-                            image.sprite = null;
-                            image.enabled = false;
-                        } else {
-                            image.sprite = sprites[item];
-                            image.enabled = true;
+                        int count = border.childCount;
+
+                        for (int j = 0; j < count; j++) {
+                            Destroy(border.GetChild(j).gameObject);
                         }
 
+                        if (type != ItemTags.None) {
+                            GameObject temp = Instantiate(items[type], border);
+                            temp.transform.localPosition = new Vector3();
+                            temp.transform.localScale = new Vector3(1, 1, 1);
+                            Item tempItem = temp.GetComponentInChildren<Item>();
+                            tempItem.id = id;
+                            tempItem.type = type;
+                            tempItem.minDamage = minDamage;
+                            tempItem.maxDamage = maxDamage;
+                            tempItem.rarity = rarity;
+                            tempItem.range = range;
+                            tempItem.fireRate = fireRate;
+                        }
+
+                    }
+
+                    GameObject equips = GameObject.FindGameObjectWithTag("Equips");
+                    for (int i = 0; i < 4; i++) {
+                        long id = reader.ReadInt64();
+                        int type = reader.ReadInt32();
+                        float minDamage = reader.ReadSingle();
+                        float maxDamage = reader.ReadSingle();
+                        int rarity = reader.ReadInt32();
+                        float range = reader.ReadSingle();
+                        float fireRate = reader.ReadSingle();
+                        Transform slot = equips.transform.GetChild(i);
+                        Transform border = slot.GetChild(0);
+
+                        int count = border.childCount;
+
+                        for (int j = 0; j < count; j++) {
+                            Destroy(border.GetChild(j).gameObject);
+                        }
+
+                        if (type == ItemTags.None) {
+                            GameObject temp = null;
+                            switch (i) {
+                                case 0:
+                                    temp = Instantiate(defaultObjects[0], border);
+                                    break;
+                                case 1:
+                                    temp = Instantiate(defaultObjects[1], border);
+                                    break;
+                                case 2:
+                                    temp = Instantiate(defaultObjects[2], border);
+                                    break;
+                                case 3:
+                                    temp = Instantiate(defaultObjects[3], border);
+                                    break;
+                            }
+
+                            if (temp != null) {
+                                temp.transform.localPosition = new Vector3();
+                                temp.transform.localScale = new Vector3(1, 1, 1);
+                            }
+                        } else {
+                            GameObject temp = Instantiate(items[type], border, true);
+                            temp.transform.localPosition = new Vector3();
+                            temp.transform.localScale = new Vector3(1, 1, 1);
+                            Item tempItem = temp.GetComponentInChildren<Item>();
+                            tempItem.id = id;
+                            tempItem.type = type;
+                            tempItem.minDamage = minDamage;
+                            tempItem.maxDamage = maxDamage;
+                            tempItem.range = range;
+                            tempItem.fireRate = fireRate;
+                        }
+                    }
+                }
+            }
+
+            if (message.Tag == Tags.SpawnEnemy) {
+                using (DarkRiftReader reader = message.GetReader()) {
+                    int count = reader.ReadInt32();
+
+                    for (int i = 0; i < count; i++) {
+                        int id = reader.ReadInt32();
+                        float x = reader.ReadSingle();
+                        float y = reader.ReadSingle();
+                        
+                        GameObject enemy = Instantiate(enemyPrefab, new Vector3(x, y, 0), new Quaternion());
+
+                        enemy.GetComponent<EnemyScript>().enemyID = id;
                     }
                 }
             }

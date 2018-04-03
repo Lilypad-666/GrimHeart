@@ -5,8 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletScript : MonoBehaviour {
-
-    public int localID;
+    
     public int remoteID;
 
     public bool spinning;
@@ -18,14 +17,17 @@ public class BulletScript : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision) {
         GameObject hit = collision.gameObject;
 
-        if (hit.tag == "Player" || hit.tag == "NetworkPlayer" || hit.tag == "Bullets" || hit.tag == "EnemyBullets") {
-            return;
-        }
+        if (hit.tag == "Enemy") {
+            using (DarkRiftWriter writer = DarkRiftWriter.Create()) {
+                //Bullet ID
+                writer.Write(remoteID);
 
-        Debug.Log(hit.name);
+                //Enemy ID
+                writer.Write(hit.GetComponent<EnemyScript>());
 
-        if (hit.tag == "Enemies") {
-            //Send to server
+                using (Message message = Message.Create(Tags.HitEnemy, writer))
+                    NetworkPlayerManager.staticClient.SendMessage(message, SendMode.Reliable);
+            }
         }
     }
 
